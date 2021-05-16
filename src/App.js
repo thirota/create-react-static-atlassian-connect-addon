@@ -4,6 +4,11 @@ import './App.css';
 import Button from '@atlaskit/button';
 
 class App extends Component {
+
+  doClick = (e)=> {
+    console.log("doClick");
+  }
+
   render() {
     return (
       <div className="App">
@@ -14,7 +19,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button>Hello world</Button>
+        <Button onClick={this.doClick}>Hello world</Button>
       </div>
     );
   }

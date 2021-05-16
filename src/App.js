@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Button from '@atlaskit/button';
+import Tooltip from '@atlaskit/tooltip';
 
 class App extends Component {
 
@@ -19,7 +20,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button onClick={this.doClick}>Hello world</Button>
+        <Tooltip content="This is AtlasKit tooltip!!">
+          <Button appearance="primary" onClick={this.doClick}>Hello AtlasKit</Button>
+        </Tooltip>
       </div>
     );
   }

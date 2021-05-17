@@ -8,6 +8,15 @@ class App extends Component {
 
   doClick = (e)=> {
     console.log("doClick");
+
+    //https://github.com/rhysdiab/atlassian-connect-express-next/blob/master/isomorphic/atlassianApiCall.js
+    //XXX What?
+    const { AP } = window;
+
+    //https://developer.atlassian.com/cloud/jira/platform/jsapi/user/
+    AP.user.getCurrentUser(function (user) {
+      console.log("The Atlassian Account ID is", user.atlassianAccountId);
+    });    
   }
 
   render() {

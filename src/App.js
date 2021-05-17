@@ -35,6 +35,14 @@ class App extends Component {
     });
   }
 
+  showUser = ()=> {
+    const { AP } = window;
+    //https://developer.atlassian.com/cloud/jira/platform/jsapi/request/
+    AP.request('/rest/api/2/myself')
+      .then(data => alert(data.body))
+      .catch(e => alert(e.err));
+  }
+
   render() {
     return (
       <div className="App">
@@ -48,6 +56,7 @@ class App extends Component {
         <Tooltip content="This is AtlasKit tooltip!!">
           <Button appearance="primary" onClick={this.doClick}>Hello AtlasKit</Button>
           <Button onClick={this.showFlag}>Flag</Button>
+          <Button onClick={this.showUser}>myself via REST</Button>
         </Tooltip>
       </div>
     );

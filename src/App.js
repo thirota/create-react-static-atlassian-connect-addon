@@ -11,7 +11,9 @@ class App extends Component {
 
     //https://github.com/rhysdiab/atlassian-connect-express-next/blob/master/isomorphic/atlassianApiCall.js
     //XXX What?
-    const { AP } = window;
+    //const { AP } = window;
+    //synonym?
+    const AP = window.AP;
 
     //https://developer.atlassian.com/cloud/jira/platform/jsapi/user/
     AP.user.getCurrentUser(function (user) {

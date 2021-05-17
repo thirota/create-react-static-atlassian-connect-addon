@@ -11,14 +11,28 @@ class App extends Component {
 
     //https://github.com/rhysdiab/atlassian-connect-express-next/blob/master/isomorphic/atlassianApiCall.js
     //XXX What?
-    //const { AP } = window;
+    const { AP } = window;
     //synonym?
-    const AP = window.AP;
+    //const AP = window.AP;
 
     //https://developer.atlassian.com/cloud/jira/platform/jsapi/user/
     AP.user.getCurrentUser(function (user) {
       console.log("The Atlassian Account ID is", user.atlassianAccountId);
     });    
+  }
+
+  showFlag = ()=> {
+    const { AP } = window;
+    // https://developer.atlassian.com/cloud/jira/platform/jsapi/flag/
+    // Display a nice green flag using the Flags JavaScript API.
+    var flag = AP.flag.create({
+      title: 'Successfully created a flag.',
+      body: 'This is a flag.',
+      type: 'success',
+      actions: {
+        'actionkey': 'Click me'
+      }
+    });
   }
 
   render() {
@@ -33,6 +47,7 @@ class App extends Component {
         </p>
         <Tooltip content="This is AtlasKit tooltip!!">
           <Button appearance="primary" onClick={this.doClick}>Hello AtlasKit</Button>
+          <Button onClick={this.showFlag}>Flag</Button>
         </Tooltip>
       </div>
     );

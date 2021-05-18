@@ -43,6 +43,24 @@ class App extends Component {
       .catch(e => alert(e.err));
   }
 
+  showProject = ()=> {
+    //https://developer.atlassian.com/cloud/jira/platform/connect-cookbook/
+    const { AP } = window;
+    AP.request({
+      url: '/rest/api/latest/project',
+      success: function(response) {
+        // convert the string response to JSON
+        response = JSON.parse(response);
+    
+        // dump out the response to the console
+        console.log(response);
+      },
+      error: function() {
+        console.log(arguments);
+      }  
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -57,6 +75,7 @@ class App extends Component {
           <Button appearance="primary" onClick={this.doClick}>Hello AtlasKit</Button>
           <Button onClick={this.showFlag}>Flag</Button>
           <Button onClick={this.showUser}>myself via REST</Button>
+          <Button onClick={this.showProject}>get Projects</Button>
         </Tooltip>
       </div>
     );

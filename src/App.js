@@ -61,6 +61,44 @@ class App extends Component {
     });
   }
 
+  doCookie = ()=> {
+    // https://developer.atlassian.com/cloud/jira/platform/jsapi/cookie/
+    const { AP } = window;
+    AP.cookie.save('my_cookie', 'my value', 1);
+    AP.cookie.read('my_cookie', function(value) { alert(value); });
+  }
+
+  openIssueDialog = ()=> {
+    //https://developer.atlassian.com/cloud/jira/platform/jsapi/jira/
+    const { AP } = window;
+    AP.jira.openIssueDialog(
+      'PROJ-1',
+      function(){
+        alert('Closed!');
+      }
+     );
+  }
+
+  jqlEditor = ()=> {
+    const { AP } = window;
+
+    // https://developer.atlassian.com/cloud/jira/platform/jsapi/jira/
+    var options = {
+      jql: 'project = PROJ',
+      header: 'My title',
+      descriptionText: 'My custom description text for dialog',
+      submitText: 'My submit label',
+      cancelText: 'My cancel label'
+    };
+    
+    var callback = function(obj) {
+      alert(obj.jql);
+    };
+    
+    //AP.jira.initJQLEditor();
+    AP.jira.showJQLEditor(options, callback);
+  }
+
   render() {
     return (
       <div className="App">
@@ -76,6 +114,10 @@ class App extends Component {
           <Button onClick={this.showFlag}>Flag</Button>
           <Button onClick={this.showUser}>myself via REST</Button>
           <Button onClick={this.showProject}>get Projects</Button>
+          <br/>
+          <Button onClick={this.doCookie}>Cookie</Button>
+          <Button onClick={this.openIssueDialog}>Issue Dialog</Button>
+          <Button onClick={this.jqlEditor}>JQL Editor</Button>
         </Tooltip>
       </div>
     );

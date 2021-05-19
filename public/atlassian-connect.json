@@ -32,6 +32,17 @@
           }
         ]
       }
+    ],
+    "jiraProjectAdminTabPanels": [
+      {
+        "location": "projectgroup4",
+        "url": "/index",
+        "weight": 100,
+        "name": {
+          "value": "Admin Panel"
+        },
+        "key": "admin-panel"
+      }
     ]
   }
 }
